@@ -9,22 +9,65 @@
     <script>
       // Computer will randomly choose between RPS
       function getComputerChoice() {
-        const choices = ["Rock", "Paper", "Scissors"];
+        const choices = ["ROCK", "PAPER", "SCISSORS"];
 
         return choices[Math.floor(Math.random() * 3)];
       }
 
-      console.log(getComputerChoice());
-
       // Plays a round of RPS between Human and Computer
       function playRound(playerSelection, computerSelection) {
-
-      }
+        playerSelection = playerSelection.toUpperCase();
+        
+        switch(playerSelection) {
+          case "ROCK":
+            if(computerSelection === "ROCK") {
+              return "Draw! Try again!"
+              break;
+            } else if(computerSelection === "PAPER") {
+              return "You Lose! Rock loses to Paper!"
+              break;
+            } else {
+              return "You Win! Rock beats Scissors!"
+              break;
+            }
+          case "PAPER":
+            if(computerSelection === "ROCK") {
+              return "You Win! Paper beats Rock!"
+              break;
+            } else if(computerSelection === "PAPER") {
+              return "Draw! Try again!"
+              break;
+            } else {
+              return "You Lose! Paper loses to Scissors!"
+              break;
+            }
+          case "SCISSORS":
+            if(computerSelection === "ROCK") {
+              return "You Lose! Scissors loses to Rock!"
+              break;
+            } else if(computerSelection === "PAPER") {
+              return "You Win! Scissors beats Paper!"
+              break;
+            } else {
+              return "Draw! Try again!"
+              break;
+            }
+          default:
+            return "That is not a valid choice, Please enter Rock, Paper, or Scissors!"
+            break;
+        }
+      }    
 
       // Plays a game of 5 rounds of RPS
       function playGame() {
-
+        console.log(playRound("rOcK", getComputerChoice()));
+        console.log(playRound("sCissors", getComputerChoice()));
+        console.log(playRound("rock", getComputerChoice()));
+        console.log(playRound("DOG", getComputerChoice()));
+        console.log(playRound("PAPER", getComputerChoice()));
       }
+
+      console.log(playGame());
     </script>
   </body>
 </html>
