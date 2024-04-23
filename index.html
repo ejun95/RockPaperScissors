@@ -8,18 +8,29 @@
     <script src="./index.js" defer></script>
   </head>
   <body>
-    <div>
-      <span id="player-score">wins: 0</span>
-      <span id="result"></span>
-      <span id="comp-score">loses: 0</span>
+    <div class="header">
+      <h1>Rock, Paper, Scissors</h1>
     </div>
-    <div id="choices">
-      <button id="rock">Rock</button>
-      <button id="paper">Paper</button>
-      <button id="scissors">Scissors</button>
+    <div class="game">
+      <div class="results">
+        <span id="player-score">wins: 0</span>
+        <span id="comp-score">loses: 0</span>
+      </div>
+      <span id="round-result"></span>
+    
+      <div class="choices">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+      </div>
+      <div class="reset">
+        <button id="reset">Play Again</button>
+      </div>
     </div>
-    <div>
-      <button id="reset">Play Again</button>
+    
+    <div class="footer">
+      <p>Created by ejun95</p>
     </div>
+    
   </body>
 </html>

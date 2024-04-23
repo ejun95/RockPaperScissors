@@ -1,9 +1,11 @@
 let playerWins = 0;
 let compWins = 0;
 let playerSelection = "";
+let isGameOver = false;
 
 const buttons = document.querySelectorAll("button:not(#reset)"); // Gets all the buttons, EXCLUDING the reset button
-const result = document.querySelector("#result");
+const result = document.querySelector("#round-result");
+result.setAttribute("class", "round-result");
 const playerScore = document.querySelector("#player-score");
 const compScore = document.querySelector("#comp-score")
 const resetButton = document.getElementById("reset");
@@ -24,16 +26,19 @@ buttons.forEach((button) => {
     if(checkIfGameOver()) {
       toggleButtons();
       resetButton.style.visibility = "visible";
-      resetButton.addEventListener("click", () => {
-        playerWins = 0;
-        compWins = 0;
-        playerScore.innerText = "Wins: " + playerWins;
-        compScore.innerText = "Loses: " + compWins;
-        toggleButtons();
-        resetButton.style.visibility = "hidden";
-      });
     }
   });
+});
+
+// Resets the game score and reenable the buttons
+resetButton.addEventListener("click", () => {
+  playerWins = 0;
+  compWins = 0;
+  playerScore.innerText = "Wins: " + playerWins;
+  compScore.innerText = "Loses: " + compWins;
+  toggleButtons();
+  resetButton.style.visibility = "hidden";
+  isGameOver = false;
 });
 
 // Computer will randomly choose between RPS
@@ -100,8 +105,14 @@ function toggleButtons() {
 
 function checkIfGameOver() {
   if(playerWins == 5 || compWins == 5) {
-    return true;
-  } else {
-    return false
+    isGameOver = true;
+    return isGameOver;
   }
+}
+
+function resetGame() {
+  playerWins = 0;
+  compWins = 0;
+  playerScore.innerText = "Wins: " + playerWins;
+  compScore.innerText = "Loses: " + compWins;
 }
